@@ -111,3 +111,20 @@ Replace config file located `~/config/imageprocessor/security.config`
   </services>
 </security>
 ```
+
+## Umbraco Forms
+
+Currently this package is available only via NuGet
+
+    Install-Package ? TODO ?
+
+### Configuration via Web.Config
+
+In `Web.config` update the new application keys with the required settings
+
+```xml
+<add key="BucketFileSystem:Region:Forms" value="" />
+<add key="BucketFileSystem:BucketPrefix:Forms" value="forms-data" />
+<add key="BucketFileSystem:BucketName:Forms" value="" />
+```
+**Note** The Forms BucketPrefix can not be `forms`.
