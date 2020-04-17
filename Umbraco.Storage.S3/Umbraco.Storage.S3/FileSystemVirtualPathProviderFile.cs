@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Web;
 using System.Web.Hosting;
 
 namespace Umbraco.Storage.S3
@@ -17,6 +18,11 @@ namespace Umbraco.Storage.S3
 
         public override Stream Open()
         {
+            if (HttpContext.Current != null && HttpContext.Current.Response != null)
+            {
+                HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.Public);
+                HttpContext.Current.Response.Cache.SetMaxAge(TimeSpan.FromDays(366));
+            }
             return _stream();
         }
 
